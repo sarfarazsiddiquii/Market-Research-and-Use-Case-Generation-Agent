@@ -10,48 +10,6 @@ from agents import (
     ai_solutions_strategist, 
     resource_collector
 )
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
-import io
-
-def generate_pdf(company_name, market_analysis, ai_use_cases, resources):
-    buffer = io.BytesIO()
-    c = canvas.Canvas(buffer, pagesize=letter)
-    width, height = letter
-
-    c.drawString(100, height - 40, f"Complete Analysis Report for {company_name}")
-
-    c.drawString(100, height - 80, "Industry and Market Analysis")
-    text = c.beginText(100, height - 100)
-    text.setTextOrigin(100, height - 100)
-    text.setFont("Helvetica", 10)
-    for line in market_analysis.split('\n'):
-        text.textLine(line)
-    c.drawText(text)
-
-    c.showPage()
-
-    c.drawString(100, height - 40, "AI/ML Opportunities and Use Cases")
-    text = c.beginText(100, height - 60)
-    text.setTextOrigin(100, height - 60)
-    text.setFont("Helvetica", 10)
-    for line in ai_use_cases.split('\n'):
-        text.textLine(line)
-    c.drawText(text)
-
-    c.showPage()
-
-    c.drawString(100, height - 40, "Implementation Resources and Guidelines")
-    text = c.beginText(100, height - 60)
-    text.setTextOrigin(100, height - 60)
-    text.setFont("Helvetica", 10)
-    for line in resources.split('\n'):
-        text.textLine(line)
-    c.drawText(text)
-
-    c.save()
-    buffer.seek(0)
-    return buffer
 
 def main():
     st.title("Market Research Analysis Tool")
@@ -85,7 +43,7 @@ def main():
 
             with progress_placeholder.container():
                 st.info("Step 3/3: Collecting implementation resources...")
-            resource_task = get_resource_collection_task(ai_use_cases_raw, "")  # Add industry if available
+            resource_task = get_resource_collection_task(ai_use_cases_raw, "") 
             resource_crew = Crew(
                 agents=[resource_collector],
                 tasks=[resource_task],
@@ -107,25 +65,23 @@ def main():
             with st.expander("Implementation Resources and Guidelines"):
                 st.markdown(resource_raw)
 
-            complete_report = f"""# Complete Analysis Report for {company_name}
+            complete_report = f"""Complete Analysis Report for {company_name}
 
-## Industry and Market Analysis
+Industry and Market Analysis
 {market_analysis_raw}
 
-## AI/ML Opportunities and Use Cases
+AI/ML Opportunities and Use Cases
 {ai_use_cases_raw}
 
-## Implementation Resources and Guidelines
+Implementation Resources and Guidelines
 {resource_raw}
 """
 
-            pdf = generate_pdf(company_name, market_analysis_raw, ai_use_cases_raw, resource_raw)
-
             st.download_button(
                 label="Download Complete Report",
-                data=pdf,
-                file_name=f"{company_name}_analysis_report.pdf",
-                mime="application/pdf"
+                data=complete_report,
+                file_name=f"{company_name}_analysis_report.txt",
+                mime="text/plain"
             )
 
 if __name__ == "__main__":
