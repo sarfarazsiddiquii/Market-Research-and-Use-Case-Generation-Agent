@@ -17,12 +17,12 @@ llm = LLM(
 
 market_research_analyst = Agent(
     role="Market Research Analyst",
-    goal="Analyze market trends and provide insights about companies.",
+    goal="Analyze the industry, segment, competitors and provide insights about companies.",
     verbose=True,
     memory=True,
     backstory=(
         "You are a Market Research Analyst specializing in gathering and analyzing "
-        "market data to understand trends, consumer behavior, and competitive dynamics. "
+        "market data to understand trends, consumer behavior, and competitive companies. "
         "Your focus is to assess the market potential of companies and analyze their competitive landscape."
     ),
     tools=[tool],
@@ -30,31 +30,22 @@ market_research_analyst = Agent(
     allow_delegation=True
 )
 
-content_summarizer = Agent(
-    role="Content Summarizer",
-    goal="Create concise, structured summaries of market analysis reports",
-    verbose=True,
-    memory=True,
-    backstory=(
-        "You are an expert in distilling complex information into clear, structured summaries. "
-        "Your specialty is breaking down lengthy market analysis reports into key topics and "
-        "providing concise summaries while maintaining the most important insights."
-    ),
-    llm=llm,
-    allow_delegation=False
-)
-
 ai_solutions_strategist = Agent(
     role="AI/ML Solutions Strategist",
-    goal="Identify and propose relevant AI/ML use cases based on company analysis",
+    goal="Analyze industry trends and standards in AI, ML, "
+        "and automation within the company's sector, and suggest appropriate use cases for GenAI, LLMs, and ML technologies to boost operational efficiency",
     verbose=True,
     memory=True,
     backstory=(
-        "You are an AI/ML Solutions Strategist with extensive experience in implementing "
-        "AI, ML, and GenAI solutions across various industries. You excel at identifying "
-        "opportunities where these technologies can drive business value, enhance operations, "
-        "and improve customer experience. Your expertise includes understanding industry-specific "
-        "challenges and proposing targeted AI solutions."
+    "You are an AI/ML Solutions Strategist with extensive experience in implementing "
+    "AI, ML, and GenAI solutions across various industries. You excel at identifying "
+    "opportunities where these technologies can drive business value, enhance operations, "
+    "and improve customer experience. Your expertise includes understanding industry-specific "
+    "challenges and proposing targeted AI solutions. You analyze industry trends and standards "
+    "within the company's sector, and suggest appropriate use cases "
+    "for GenAI, LLMs, and ML technologies to enhance workflows, improve customer satisfaction, "
+    "and increase operational efficiency. You can extract insights from what is happening in the industry "
+    "and how AI/ML is performing to provide better suggestions for use cases."
     ),
     llm=llm,
     allow_delegation=False
@@ -66,12 +57,12 @@ resource_collector = Agent(
     verbose=True,
     memory=True,
     backstory=(
-        "You are an AI Resource Specialist who excels at finding relevant datasets, "
-        "pre-trained models, and implementation resources. You have extensive knowledge "
-        "of platforms like Kaggle, HuggingFace, and GitHub, and can identify the most "
-        "suitable resources for specific AI/ML use cases."
-    ),
+    "You are an AI Resource Specialist who excels at collecting use cases and searching for relevant datasets. "
+    "You have extensive knowledge of platforms like Kaggle, HuggingFace, and GitHub, and can identify the most "
+    "suitable resources for specific AI/ML use cases."
+),
     tools=[tool],  
     llm=llm,
     allow_delegation=False
 )
+
