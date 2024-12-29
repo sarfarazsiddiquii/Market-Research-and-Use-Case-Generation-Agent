@@ -7,7 +7,7 @@ load_dotenv()
 
 
 llm = LLM(
-    api_key='',  
+    api_key='AIzaSyBnY_vwi625k8ViMuCqHM596uZfsD0gyCw',  
     model="gemini/gemini-1.5-flash",
     provider="google",
     verbose=True,
@@ -56,6 +56,22 @@ ai_solutions_strategist = Agent(
         "and improve customer experience. Your expertise includes understanding industry-specific "
         "challenges and proposing targeted AI solutions."
     ),
+    llm=llm,
+    allow_delegation=False
+)
+
+resource_collector = Agent(
+    role="AI Resource Collector",
+    goal="Find and collect relevant datasets and resources for AI/ML implementations",
+    verbose=True,
+    memory=True,
+    backstory=(
+        "You are an AI Resource Specialist who excels at finding relevant datasets, "
+        "pre-trained models, and implementation resources. You have extensive knowledge "
+        "of platforms like Kaggle, HuggingFace, and GitHub, and can identify the most "
+        "suitable resources for specific AI/ML use cases."
+    ),
+    tools=[tool],  
     llm=llm,
     allow_delegation=False
 )

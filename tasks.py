@@ -1,6 +1,6 @@
 from crewai import Task
 from tools import tool
-from agents import market_research_analyst, content_summarizer, ai_solutions_strategist
+from agents import market_research_analyst, content_summarizer, ai_solutions_strategist, resource_collector
 
 market_analysis = Task(
     description=(
@@ -55,4 +55,24 @@ def get_ai_use_cases_task(market_analysis_content):
             "      - Supply Chain: ..."
         ),
         agent=ai_solutions_strategist
+    )
+
+def get_resource_collection_task(ai_use_cases_content):
+    return Task(
+        description=(
+            f"Based on the AI/ML use cases provided, search for relevant datasets, "
+            f"pre-trained models, and implementation resources on platforms like Kaggle, "
+            f"HuggingFace, and GitHub. For each use case, find specific resources that "
+            f"could help in implementation. Use cases content: {ai_use_cases_content}"
+        ),
+        expected_output=(
+            "A structured collection of resources for each AI use case, including:\n"
+            "1. Relevant datasets from Kaggle or similar platforms\n"
+            "2. Pre-trained models from HuggingFace if applicable\n"
+            "3. Similar open-source projects or implementations on GitHub\n"
+            "4. Brief description of how each resource could be useful\n"
+            "Format as a markdown document with clear sections and links."
+        ),
+        agent=resource_collector,
+        tools=[tool]  
     )
