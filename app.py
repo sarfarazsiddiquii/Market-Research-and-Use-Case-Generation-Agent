@@ -43,7 +43,7 @@ def main():
 
             with progress_placeholder.container():
                 st.info("Step 3/3: Collecting implementation resources...")
-            resource_task = get_resource_collection_task(ai_use_cases_raw, "") 
+            resource_task = get_resource_collection_task(ai_use_cases_raw)
             resource_crew = Crew(
                 agents=[resource_collector],
                 tasks=[resource_task],

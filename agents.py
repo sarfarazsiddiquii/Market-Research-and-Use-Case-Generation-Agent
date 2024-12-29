@@ -7,7 +7,7 @@ load_dotenv()
 
 
 llm = LLM(
-    api_key='AIzaSyBnY_vwi625k8ViMuCqHM596uZfsD0gyCw',  
+    api_key='',  
     model="gemini/gemini-1.5-flash",
     provider="google",
     verbose=True,

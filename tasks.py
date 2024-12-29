@@ -34,7 +34,7 @@ def get_ai_use_cases_task(market_analysis_content):
         ),
         expected_output=(
             "A brief summary of the company (what it does, how it works, and its segment).\n"
-            "AI use cases(at least 10 if not more):\n"
+            "AI use cases(at least 5 if not more):\n"
             "   - Use Case 1: ...\n"
             "   - Use Case 2: ...\n"
             "   - Use Case 3: ...\n"
@@ -47,23 +47,20 @@ def get_ai_use_cases_task(market_analysis_content):
         agent=ai_solutions_strategist
     )
 
-def get_resource_collection_task(ai_use_cases_content, company_industry):
+def get_resource_collection_task(ai_use_cases_content):
     return Task(
         description=(
-            f"Based on the AI/ML use cases provided and the company's industry ({company_industry}), conduct a comprehensive "
+            f"Based on the AI/ML use cases provided, for each use case conduct a comprehensive "
             f"resource search including:\n"
-            f"1. Technical resources: datasets, pre-trained models, and implementation examples\n"
-            f"2. Industry insights: Recent reports and case studies from consulting firms about AI in this industry\n"
+            f"Technical resources: datasets on Kaggle, pre-trained models on HuggingFace, and implementation examples on github\n"
             f"Use cases content: {ai_use_cases_content}"
         ),
         expected_output=(
-            "A comprehensive resource collection with two main sections:\n\n"
-            "## Technical Implementation Resources\n"
+            "A comprehensive resource collection:\n\n"
             "For each AI use case:\n"
             "1. Relevant datasets from platforms like Kaggle (if available)\n"
             "2. Pre-trained models from HuggingFace or similar platforms (if available)\n"
             "3. Similar open-source projects or implementations on GitHub (if available)\n"
-            "4. Brief description of how each resource could be useful\n"
             "5. Implementation directions for the company's specific needs\n\n"
             "Format as a markdown document with clear sections and links.\n"
             "Only include resources that are available and relevant, do not direct on how to find one."
