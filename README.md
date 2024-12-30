@@ -2,12 +2,15 @@
 
 This project is a tool for generating market research insights and use cases using AI-powered agents. It streamlines the process of analyzing data and delivering actionable insights for various business applications.
 
+## Output Demo video
+https://www.loom.com/share/e925a61bafe1443f941338db456af01d?sid=0aa1742a-d116-459a-9725-252b6e4c8562 
+
 ## Installation Instructions
 
 ### 1. Clone the Repository
 Clone the project repository to your local machine:
 ```bash
-git clone <repository-url>
+git clone https://github.com/sarfarazsiddiquii/Market-Research-and-Use-Case-Generation-Agent
 ```
 ### 2. Install Requirements
 Navigate to the project directory and install the required dependencies:
