@@ -3,7 +3,7 @@
 This project is a tool for generating market research insights and use cases using AI-powered agents. It streamlines the process of analyzing data and delivering actionable insights for various business applications.
 
 ## Output Demo video
-https://www.loom.com/share/e925a61bafe1443f941338db456af01d?sid=0aa1742a-d116-459a-9725-252b6e4c8562 
+Link: https://www.loom.com/share/e925a61bafe1443f941338db456af01d?sid=0aa1742a-d116-459a-9725-252b6e4c8562 
 
 ## Installation Instructions
 
@@ -31,3 +31,6 @@ Start the application using Streamlit:
 ```bash
 streamlit run app.py
 ```
+### Project Explanation (Report)
+
+Link : https://fire-song-c09.notion.site/Market-Research-and-Use-Case-Generation-Agent-16c4d40b36d8805caef5cf16800dfaae
