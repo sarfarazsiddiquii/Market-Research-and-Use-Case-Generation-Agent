@@ -5,9 +5,10 @@ import os
 
 load_dotenv()
 
+gemini_api_key = os.getenv('GEMINI_API_KEY')
 
 llm = LLM(
-    api_key='',  
+    api_key=gemini_api_key,  
     model="gemini/gemini-1.5-flash",
     provider="google",
     verbose=True,
@@ -65,4 +66,5 @@ resource_collector = Agent(
     llm=llm,
     allow_delegation=False
 )
+
 

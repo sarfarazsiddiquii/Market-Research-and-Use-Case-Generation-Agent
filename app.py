@@ -12,7 +12,7 @@ from agents import (
 )
 
 def main():
-    st.title("Market Research Analysis Tool")
+    st.title("Market Research And Use Case Generation Tool")
     company_name = st.text_input("Enter the company name:", placeholder="e.g., Google, Amazon, Tesla")
     
     if st.button("Analyze"):
@@ -42,7 +42,7 @@ def main():
             ai_use_cases_raw = ai_use_cases_result.raw if hasattr(ai_use_cases_result, 'raw') else "No AI use cases found"
 
             with progress_placeholder.container():
-                st.info("Step 3/3: Collecting implementation resources...")
+                st.info("Step 3/3: Collecting resources...")
             resource_task = get_resource_collection_task(ai_use_cases_raw)
             resource_crew = Crew(
                 agents=[resource_collector],

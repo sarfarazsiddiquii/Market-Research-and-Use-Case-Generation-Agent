@@ -38,7 +38,7 @@ def get_ai_use_cases_task(market_analysis_content):
             "   - Use Case 1: ...\n"
             "   - Use Case 2: ...\n"
             "   - Use Case 3: ...\n"
-            "Each use case should be explained in 3 points:\n"
+            "Each use case should be explained in 3 points (each point in new line):\n"
             "   a. Objective/Use Case: ...\n"
             "   b. AI Application: ...\n"
             "   c. Cross-Functional Benefit: ...\n"
